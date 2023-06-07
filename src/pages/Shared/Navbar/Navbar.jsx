@@ -7,10 +7,10 @@ import { AuthContext } from '../../../providers/AuthProviders';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const navItems = <>
-        <li><a>Home</a></li>
-        <li><a>Instructors</a></li>
-        <li><a>Classes</a></li>
-        <li><a>Dashboard</a></li>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/instractors'>Instructors</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
+        <li><Link to='/dashboard'>Dashboard</Link></li>
     </>
 
     const handleLogOut = () => {
@@ -36,7 +36,7 @@ const Navbar = () => {
                     <img src={logo} alt="Logo" />
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal px-1 ">
                         {navItems}
                     </ul>
                 </div>

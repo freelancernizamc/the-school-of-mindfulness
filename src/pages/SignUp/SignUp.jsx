@@ -91,7 +91,7 @@ const SignUp = () => {
                     <div className="hero-content flex-col lg:flex-row">
                         <div className="text-center lg:text-left md:w-1/2">
 
-                            <img src={login} alt="" />
+                            <img className='h-[800px]' src={login} alt="" />
                         </div>
                         <div className="card flex md:w-1/2 max-w-sm shadow-2xl bg-base-100">
                             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
