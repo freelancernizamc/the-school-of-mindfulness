@@ -47,6 +47,16 @@ const SignUp = () => {
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
+                                        <span className="label-text">Gender</span>
+                                    </label>
+                                    <select {...register("gender")} className='input input-bordered'>
+                                        <option value="female">female</option>
+                                        <option value="male">male</option>
+                                        <option value="other">other</option>
+                                    </select>
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
                                     <input type="text" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
@@ -66,12 +76,23 @@ const SignUp = () => {
                                     {errors.password?.type === 'minLength' && <p className="text-rose-700">Password Must be 6 characters</p>}
                                     {errors.password?.type === 'maxLength' && <p className="text-rose-700">Password Must be less than 20 characters</p>}
                                     {errors.password?.type === 'pattern' && <p className="text-rose-700">Password Must be at least one number and one special characters</p>}
+                                </div>
+                                <div className="form-control">
                                     <label className="label">
-                                        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                        <span className="label-text">Confirm Password</span>
                                     </label>
+                                    <input type="password" {...register("password", {
+                                        required: true,
+                                        minLength: 6,
+                                        maxLength: 20,
+                                        pattern: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]/
+                                    })} name="password" placeholder="password" className="input input-bordered" />
+                                    {errors.password?.type === 'required' && <p className="text-rose-700">Confirm your Password!</p>}
+                                    {errors.password?.type === 'minLength' && <p className="text-rose-700">Password Must be match</p>}
+
                                 </div>
                                 <div className="form-control mt-6">
-                                    <input type="submit" value="Sign Up" className="btn bg-[#F8D4A1] text-black" />
+                                    <input type="submit" value="Sign Up" className="btn bg-[#972BE1] text-white" />
                                 </div>
                             </form>
                             <p className='text-center mb-2'><small>Have an Account? <Link to='/login' className='text-orange-700 font-semibold'>Please Login</Link></small></p>

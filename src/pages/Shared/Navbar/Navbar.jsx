@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/mindfulness.png';
 
 const Navbar = () => {
@@ -27,7 +28,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn bg-[#9931E1] text-white">Login</a>
+                    <Link to='/login' className="btn bg-[#9931E1] text-white">Login</Link>
                 </div>
             </div>
         </div>
