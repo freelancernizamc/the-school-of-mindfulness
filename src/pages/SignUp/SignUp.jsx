@@ -1,18 +1,82 @@
 
+
 import { useForm } from 'react-hook-form';
-import { Helmet } from "react-helmet-async";
 import login from '../../assets/images/login.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
+import { FcGoogle } from 'react-icons/fc';
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProviders';
 
 
 const SignUp = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    // const { createUser, updateUserProfile, signInWithGoogle, setLoading } = useContext(AuthContext);
-    // const navigate = useNavigate();
-    // const from = location.state?.from?.pathname || "/";
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile, signInWithGoogle, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
         console.log(data);
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        // console.log('User profile info updated')
+                        const saveUser = { name: data.name, email: data.email, photoURL: data.photoURL }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'You Successfully Sign Up',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
+                            .catch(error => console.log(error));
+                    })
+                    .catch(error => console.log(error));
+            })
+            .catch(error => console.log(error));
+    };
+
+
+    // Handle Google signIn
+    const handleGoogleSignIn = () => {
+        signInWithGoogle().then(result => {
+            const saveUser = { name: result.user.displayName, email: result.user.email, photoURL: result.user.photoURL }
+            fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(saveUser)
+            })
+
+            console.log(result.user)
+            navigate(from, { replace: true });
+        })
+            .catch(err => {
+                setLoading(false);
+                console.log(err.message)
+                toast.error(err.message)
+            })
     }
 
     return (
@@ -97,11 +161,11 @@ const SignUp = () => {
                             </form>
                             <p className='text-center mb-2'><small>Have an Account? <Link to='/login' className='text-orange-700 font-semibold'>Please Login</Link></small></p>
                             <div className="divider">OR</div>
-                            {/* <div onClick={handleGoogleSignIn} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
+                            <div onClick={handleGoogleSignIn} className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
                                 <FcGoogle size={32} />
 
                                 <p>Continue with Google</p>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 </div>
