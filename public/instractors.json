@@ -1,0 +1,314 @@
+[
+    {
+        "name": "Emily Johnson",
+        "image": "https://i.ibb.co/n6pyQwS/ena.jpg",
+        "email": "emily.johnson@gmail.com",
+        "takenClasses": 8,
+        "nameOfTakenClasses": [
+            "Beginner Yoga",
+            "Vinyasa Flow"
+        ],
+        "classDetails": [
+            {
+                "name": "Beginner Yoga",
+                "image": "https://i.ibb.co/Sw0rymp/yoga-for-beginners.jpg",
+                "instructorName": "Emily Johnson",
+                "availableSeats": 10,
+                "price": 15,
+                "description": "A class designed for yoga beginners to learn the foundational poses and principles of yoga practice."
+            },
+            {
+                "name": "Vinyasa Flow",
+                "image": "https://i.ibb.co/yszJ8by/vinyasa-yoga.jpg",
+                "instructorName": "Emily Johnson",
+                "availableSeats": 12,
+                "price": 20,
+                "description": "A dynamic and fluid style of yoga that synchronizes breath with movement, creating a flowing sequence of poses."
+            },
+            {
+                "name": "Restorative Yoga",
+                "image": "https://i.ibb.co/98PCh5F/restorative.jpg",
+                "instructorName": "Emily Johnson",
+                "availableSeats": 8,
+                "price": 18,
+                "description": "A gentle and relaxing practice that focuses on deep relaxation and rejuvenation of the body and mind."
+            }
+        ]
+    },
+    {
+        "name": "Michael Davis",
+        "image": "https://i.ibb.co/wQLz9xz/michal.jpg",
+        "email": "michael.davis@example.com",
+        "takenClasses": 12,
+        "nameOfTakenClasses": [
+            "Hatha Yoga",
+            "Power Yoga"
+        ],
+        "classDetails": [
+            {
+                "name": "Hatha Yoga",
+                "image": "https://i.ibb.co/vHdm6yR/Hatha-Yoga.jpg",
+                "instructorName": "Michael Davis",
+                "availableSeats": 10,
+                "price": 15,
+                "description": "A traditional form of yoga that focuses on physical postures (asanas), breath control, and meditation techniques."
+            },
+            {
+                "name": "Power Yoga",
+                "image": "https://i.ibb.co/zZ7p5hz/poweryoga.jpg",
+                "instructorName": "Michael Davis",
+                "availableSeats": 12,
+                "price": 20,
+                "description": "A dynamic and energetic style of yoga that combines strength, flexibility, and cardio exercises."
+            },
+            {
+                "name": "Yin Yoga",
+                "image": "https://i.ibb.co/M8HN5zx/Yin-Yoga.jpg",
+                "instructorName": "Michael Davis",
+                "availableSeats": 8,
+                "price": 18,
+                "description": "A slow-paced and meditative practice that targets the deep connective tissues and enhances flexibility and circulation."
+            }
+        ]
+    },
+    {
+        "name": "Verginia Hunt",
+        "image": "https://i.ibb.co/PtcmPkx/verginia.jpg",
+        "email": "verjinia@gmail.com",
+        "takenClasses": 12,
+        "nameOfTakenClasses": [
+            "Yin Yoga",
+            "Ashtanga Yoga"
+        ],
+        "classDetails": [
+            {
+                "name": "Yin Yoga",
+                "image": "https://i.ibb.co/M8HN5zx/Yin-Yoga.jpg",
+                "instructorName": "Verjinia Hunt",
+                "availableSeats": 10,
+                "price": 15,
+                "description": "A traditional form of yoga that focuses on physical postures (asanas), breath control, and meditation techniques."
+            },
+            {
+                "name": "Ashtanga Yoga",
+                "image": "https://i.ibb.co/Kb98NTr/ashtanga.jpg",
+                "instructorName": "Michael Davis",
+                "availableSeats": 12,
+                "price": 20,
+                "description": "A dynamic and energetic style of yoga that combines strength, flexibility, and cardio exercises."
+            },
+            {
+                "name": "Yin Yoga",
+                "image": "https://i.ibb.co/M8HN5zx/Yin-Yoga.jpg",
+                "instructorName": "Michael Davis",
+                "availableSeats": 8,
+                "price": 18,
+                "description": "A slow-paced and meditative practice that targets the deep connective tissues and enhances flexibility and circulation."
+            }
+        ]
+    },
+    {
+        "name": "Josefa Moore",
+        "image": "https://i.ibb.co/1f1Sngk/josefa.jpg",
+        "email": "josefa@gmail.com",
+        "takenClasses": 12,
+        "nameOfTakenClasses": [
+            "Kundalini Yoga",
+            "Iyengar Yoga"
+        ],
+        "classDetails": [
+            {
+                "name": "Iyengar Yoga",
+                "image": "https://i.ibb.co/Kb98NTr/ashtanga.jpg",
+                "instructorName": "Josefa Moore",
+                "availableSeats": 10,
+                "price": 15,
+                "description": "A traditional form of yoga that focuses on physical postures (asanas), breath control, and meditation techniques."
+            },
+            {
+                "name": "Kundalini Yoga",
+                "image": "https://i.ibb.co/zZ7p5hz/poweryoga.jpg",
+                "instructorName": "Josefa Moore",
+                "availableSeats": 12,
+                "price": 20,
+                "description": "A dynamic and energetic style of yoga that combines strength, flexibility, and cardio exercises."
+            },
+            {
+                "name": "Yin Yoga",
+                "image": "https://i.ibb.co/M8HN5zx/Yin-Yoga.jpg",
+                "instructorName": "Josefa Moore",
+                "availableSeats": 8,
+                "price": 18,
+                "description": "A slow-paced and meditative practice that targets the deep connective tissues and enhances flexibility and circulation."
+            }
+        ]
+    },
+    {
+        "name": "Emily Johnson",
+        "image": "https://i.ibb.co/n6pyQwS/ena.jpg",
+        "email": "emily.johnson@example.com",
+        "takenClasses": 8,
+        "nameOfTakenClasses": [
+            "Beginner Yoga",
+            "Vinyasa Flow"
+        ],
+        "classDetails": [
+            {
+                "name": "Beginner Yoga",
+                "image": "https://i.ibb.co/Sw0rymp/yoga-for-beginners.jpg",
+                "instructorName": "Emily Johnson",
+                "availableSeats": 10,
+                "price": 15,
+                "description": "A class designed for yoga beginners to learn the foundational poses and principles of yoga practice."
+            },
+            {
+                "name": "Vinyasa Flow",
+                "image": "https://i.ibb.co/yszJ8by/vinyasa-yoga.jpg",
+                "instructorName": "Emily Johnson",
+                "availableSeats": 12,
+                "price": 20,
+                "description": "A dynamic and fluid style of yoga that synchronizes breath with movement, creating a flowing sequence of poses."
+            }
+        ]
+    },
+    {
+        "name": "Michael Davis",
+        "image": "https://i.ibb.co/wQLz9xz/michal.jpg",
+        "email": "michael.davis@example.com",
+        "takenClasses": 12,
+        "nameOfTakenClasses": [
+            "Hatha Yoga",
+            "Power Yoga"
+        ],
+        "classDetails": [
+            {
+                "name": "Hatha Yoga",
+                "image": "https://i.ibb.co/vHdm6yR/Hatha-Yoga.jpg",
+                "instructorName": "Michael Davis",
+                "availableSeats": 10,
+                "price": 15,
+                "description": "A traditional form of yoga that focuses on physical postures (asanas), breath control, and meditation techniques."
+            },
+            {
+                "name": "Power Yoga",
+                "image": "https://i.ibb.co/zZ7p5hz/poweryoga.jpg",
+                "instructorName": "Michael Davis",
+                "availableSeats": 12,
+                "price": 20,
+                "description": "A dynamic and energetic style of yoga that combines strength, flexibility, and cardio exercises."
+            }
+        ]
+    },
+    {
+        "name": "Sarah Thompson",
+        "image": "https://i.ibb.co/bX7Bczc/sarah.jpg",
+        "email": "sarah.thompson@yahoo.com.com",
+        "takenClasses": 5,
+        "nameOfTakenClasses": [
+            "Yin Yoga",
+            "Restorative Yoga"
+        ],
+        "classDetails": [
+            {
+                "name": "Yin Yoga",
+                "image": "https://i.ibb.co/M8HN5zx/Yin-Yoga.jpg",
+                "instructorName": "Sarah Thompson",
+                "availableSeats": 8,
+                "price": 18,
+                "description": "A slow-paced and meditative practice that targets the deep connective tissues and enhances flexibility and circulation."
+            },
+            {
+                "name": "Restorative Yoga",
+                "image": "https://i.ibb.co/98PCh5F/restorative.jpg",
+                "instructorName": "Sarah Thompson",
+                "availableSeats": 8,
+                "price": 18,
+                "description": "A gentle and relaxing practice that focuses on deep relaxation and rejuvenation of the body and mind."
+            }
+        ]
+    },
+    {
+        "name": "David Lee",
+        "image": "https://i.ibb.co/wQLz9xz/michal.jpg",
+        "email": "david.lee@example.com",
+        "takenClasses": 10,
+        "nameOfTakenClasses": [
+            "Kundalini Yoga",
+            "Yoga Nidra"
+        ],
+        "classDetails": [
+            {
+                "name": "Kundalini Yoga",
+                "image": "https://i.ibb.co/zZ7p5hz/poweryoga.jpg",
+                "instructorName": "David Lee",
+                "availableSeats": 12,
+                "price": 20,
+                "description": "A spiritual and dynamic form of yoga that combines breathwork, movement, meditation, and chanting."
+            },
+            {
+                "name": "Yoga Nidra",
+                "image": "https://i.ibb.co/vD157Kv/nidra.jpg",
+                "instructorName": "David Lee",
+                "availableSeats": 10,
+                "price": 15,
+                "description": "A guided meditation practice that induces deep relaxation and promotes healing and self-discovery."
+            }
+        ]
+    },
+    {
+        "name": "Jessica Roberts",
+        "image": "https://i.ibb.co/d552n6t/jssica.png",
+        "email": "jessica.roberts@example.com",
+        "takenClasses": 15,
+        "nameOfTakenClasses": [
+            "Iyengar Yoga",
+            "Yoga for Stress Relief"
+        ],
+        "classDetails": [
+            {
+                "name": "Iyengar Yoga",
+                "image": "https://i.ibb.co/vD157Kv/nidra.jpg",
+                "instructorName": "Jessica Roberts",
+                "availableSeats": 10,
+                "price": 15,
+                "description": "A style of yoga that emphasizes alignment, precision, and the use of props to support the body in poses."
+            },
+            {
+                "name": "Yoga for Stress Relief",
+                "image": "https://i.ibb.co/XV1J0Gn/bikram.jpg",
+                "instructorName": "Jessica Roberts",
+                "availableSeats": 12,
+                "price": 20,
+                "description": "A gentle and soothing yoga practice that helps reduce stress, anxiety, and promote relaxation."
+            }
+        ]
+    },
+    {
+        "name": "Ryan Wilson",
+        "image": "https://i.ibb.co/RT1ZrCG/img-header.png",
+        "email": "ryan.wilson@example.com",
+        "takenClasses": 3,
+        "nameOfTakenClasses": [
+            "Ashtanga Yoga",
+            "Bikram Yoga"
+        ],
+        "classDetails": [
+            {
+                "name": "Ashtanga Yoga",
+                "image": "https://i.ibb.co/Kb98NTr/ashtanga.jpg",
+                "instructorName": "Ryan Wilson",
+                "availableSeats": 8,
+                "price": 18,
+                "description": "A dynamic and physically demanding style of yoga that follows a set sequence of postures."
+            },
+            {
+                "name": "Bikram Yoga",
+                "image": "https://i.ibb.co/XV1J0Gn/bikram.jpg",
+                "instructorName": "Ryan Wilson",
+                "availableSeats": 10,
+                "price": 15,
+                "description": "A style of yoga practiced in a heated room, consisting of a fixed sequence of 26 postures and 2 breathing exercises."
+            }
+        ]
+    }
+]
