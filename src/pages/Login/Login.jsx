@@ -16,7 +16,7 @@ const Login = () => {
     return (
         <>
             <Helmet>
-                <title>The School of Mindfulness | Sign Up</title>
+                <title>The School of Mindfulness | Login</title>
 
             </Helmet>
             <div className='bg-base-200'>
