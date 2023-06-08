@@ -5,12 +5,16 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProviders';
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, isAdmin } = useContext(AuthContext);
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instractors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
-        <li><Link to='/dashboard'>Dashboard</Link></li>
+        {
+            isAdmin ? <li><Link to="/dashboard/adminhome">Dashboard</Link></li> :
+
+                <li><Link to="/dashboard/userhome">Dashboard</Link></li>
+        }
     </>
 
     const handleLogOut = () => {

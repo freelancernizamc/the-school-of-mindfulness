@@ -8,6 +8,9 @@ import SignUp from "../pages/SignUp/SignUp";
 import Login from "../pages/Login/Login";
 import Instractors from "../pages/Instractors/Instractors";
 import Classes from "../pages/Classes/Classes";
+import Dashboard from "../Layout/Dashboard";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 
 
 
@@ -38,6 +41,22 @@ export const router = createBrowserRouter([
             }
         ]
 
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard />,
+        children: [
+            {
+                path: 'userhome',
+                element: <UserHome />
+            },
+            {
+                path: 'adminhome',
+                element: <AdminHome />
+            }
+
+
+        ]
     }
 
 ]);

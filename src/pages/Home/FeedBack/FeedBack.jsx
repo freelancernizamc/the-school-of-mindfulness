@@ -29,10 +29,9 @@ const FeedBack = () => {
                     <div className="w-[80px] mx-auto rounded-full"> <img src={student1} /></div>
                     <div className="myCarousel">
                         <h3>Shirley Fultz</h3>
-                        <h4>Designer</h4>
+                        <h4>Web Developer</h4>
                         <p>
-                            It is freeing to be able to catch up on customized news and not be
-                            distracted by a social media element on the same site
+                            I Enjoy on this journey of self-discovery, balance, and well-being with our Yoga and Meditation course, offered by The School of Mindfulness
                         </p>
                     </div>
                 </div>
@@ -43,8 +42,7 @@ const FeedBack = () => {
                         <h3>Daniel Keystone</h3>
                         <h4>Designer</h4>
                         <p>
-                            The simple and intuitive design makes it easy for me use. I highly
-                            recommend Fetch to my peers.
+                            Discover inner peace and unlock your full potential through our transformative Yoga and Meditation course at The School of Mindfulness.
                         </p>
                     </div>
                 </div>
@@ -53,10 +51,9 @@ const FeedBack = () => {
                     <div className="w-[80px] mx-auto rounded-full"> <img src={student3} /></div>
                     <div className="myCarousel">
                         <h3>Theo Sorel</h3>
-                        <h4>Designer</h4>
+                        <h4>Fashion Designer</h4>
                         <p>
-                            I enjoy catching up with Fetch on my laptop, or on my phone when
-                            I am on the go!
+                            Embark on a journey of self-discovery, balance, and well-being with our Yoga and Meditation course, offered by The School of Mindfulness
                         </p>
                     </div>
                 </div>
