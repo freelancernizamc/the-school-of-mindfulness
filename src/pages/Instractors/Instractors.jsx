@@ -3,6 +3,7 @@ import InstractorBanner from "./InstractorBanner";
 
 // import axios from 'axios';
 import { useQuery } from "@tanstack/react-query";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 
 const Instractors = () => {
@@ -34,10 +35,14 @@ const Instractors = () => {
 
             </Helmet>
             <InstractorBanner />
+            <SectionTitle
+                subHeading="---The School of Mindfulness"
+                heading="Our All Instractors"
+            ></SectionTitle>
 
             <div className="grid grid-cols-3 gap-4">
                 {data.map((instructor) => (
-                    <div key={instructor._id} className="card w-96 bg-base-100 shadow-xl">
+                    <div key={instructor._id} className="card w-96 bg-black text-white hover:bg-slate-300 hover:text-black mb-4 shadow-xl">
                         <figure className="px-10 pt-10">
                             <img src={instructor.image} alt="Shoes" className="rounded-xl" />
                         </figure>
