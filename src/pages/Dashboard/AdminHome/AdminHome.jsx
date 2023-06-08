@@ -3,10 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import logo from '../../../assets/images/mindfulness.png';
 import { FaHome, FaHouseUser, FaMale, FaUser } from "react-icons/fa";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const AdminHome = () => {
     const { user, logOut } = useContext(AuthContext);
+    // const [axiosSecure] = useAxiosSecure();
 
     const handleLogOut = () => {
         logOut()
@@ -15,6 +17,7 @@ const AdminHome = () => {
             })
             .catch(error => console.log(error))
     }
+
     return (
         <div>
             <div className="drawer lg:drawer-open">
@@ -59,8 +62,8 @@ const AdminHome = () => {
 
                             <div className="divider"></div>
                             <li><NavLink to='/'><FaHome /> Home</NavLink></li>
-                            <li><NavLink to="/menu"><FaMale />Our Instractors</NavLink></li>
-                            <li><NavLink to='/order/salad'><FaHouseUser />Our Classes</NavLink></li>
+                            <li><NavLink to="/instractors"><FaMale />Our Instractors</NavLink></li>
+                            <li><NavLink to='/classes'><FaHouseUser />Our Classes</NavLink></li>
                         </>
                         <li className="mt-40"> <NavLink onClick={handleLogOut}>Log Out</NavLink></li>
                     </ul>

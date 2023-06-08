@@ -11,10 +11,18 @@ const Navbar = () => {
         <li><Link to='/instractors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
         {
-            isAdmin ? <li><Link to="/dashboard/adminhome">Dashboard</Link></li> :
-
+            isAdmin ? (
+                <li><Link to="/dashboard/adminhome">Dashboard</Link></li>
+            ) : (
                 <li><Link to="/dashboard/userhome">Dashboard</Link></li>
+            )
         }
+
+
+
+
+
+
     </>
 
     const handleLogOut = () => {

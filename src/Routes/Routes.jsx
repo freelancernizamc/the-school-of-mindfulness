@@ -11,6 +11,11 @@ import Classes from "../pages/Classes/Classes";
 import Dashboard from "../Layout/Dashboard";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import InstractorsHome from "../pages/Dashboard/InstractorsHome/InstractorsHome";
+// import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
+import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
+import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 
 
 
@@ -52,7 +57,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'adminhome',
-                element: <AdminHome />
+                element: <AdminRoute><AdminHome /></AdminRoute>
+            },
+            {
+                path: 'instractorshome',
+                element: <InstractorsHome />
+            },
+            {
+                path: 'manageusers',
+                element: <ManageUsers />
+            },
+            {
+                path: 'manageclasses',
+                element: <ManageClasses />
             }
 
 
