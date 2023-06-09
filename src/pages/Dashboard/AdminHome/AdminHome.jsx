@@ -3,14 +3,18 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import logo from '../../../assets/images/mindfulness.png';
 import { FaHome, FaHouseUser, FaMale, FaUser } from "react-icons/fa";
+import useAdmin from "../../../hooks/useAdmin";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const AdminHome = () => {
     const { user, logOut } = useContext(AuthContext);
     // const [axiosSecure] = useAxiosSecure();
+    const [isAdmin, isAdminLoading] = useAdmin();
+    console.log(isAdmin, isAdminLoading);
 
     const handleLogOut = () => {
+
         logOut()
             .then(() => {
 

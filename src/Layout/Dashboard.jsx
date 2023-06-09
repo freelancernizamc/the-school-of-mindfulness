@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { AiOutlineBars } from 'react-icons/ai'
 
 import logo from '../assets/images/mindfulness.png';
-// import useAdmin from "../hooks/useAdmin";
+
 
 import { useState } from "react";
 import useAdmin from "../hooks/useAdmin";
@@ -14,14 +14,15 @@ import { AuthContext } from "../providers/AuthProviders";
 const Dashboard = () => {
 
 
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, } = useContext(AuthContext);
     const [isActive, setActive] = useState('false')
 
-    const [isAdmin] = useAdmin();
-    // console.log(isAdmin);
+    const [isAdmin, isAdminLoading] = useAdmin();
+    console.log(isAdmin, isAdminLoading);
 
     const handleToggle = () => {
         setActive(!isActive)
+
     }
 
     const handleLogOut = () => {
@@ -85,7 +86,7 @@ const Dashboard = () => {
                             <div className="divider"></div>
                             <li><NavLink to='/'><FaHome /> Home</NavLink></li>
                             <li><NavLink to="/menu">OUR Instractors</NavLink></li>
-                            <li><NavLink to='/order/salad'>ORDER Classes</NavLink></li>
+                            <li><NavLink to='/order/salad'>Our Classes</NavLink></li>
                         </> : <>
                             <li><NavLink to="/dashboard/userhome"><FaHome /> Student Home</NavLink></li>
                             <li><NavLink to="/reservation"><FaCalendar /> My Selected Classes</NavLink></li>

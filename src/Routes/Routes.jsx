@@ -12,10 +12,11 @@ import Dashboard from "../Layout/Dashboard";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import InstractorsHome from "../pages/Dashboard/InstractorsHome/InstractorsHome";
-// import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
@@ -49,7 +51,7 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             {
                 path: 'userhome',
