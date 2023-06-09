@@ -17,6 +17,7 @@ import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import InstractorRoute from "./InstractorRoute";
 
 
 
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'instractors',
-                element: <Instractors />
+                element: <InstractorRoute><Instractors /></InstractorRoute>
             },
             {
                 path: 'classes',

@@ -1,38 +1,33 @@
-import { FaCalendar, FaHome, FaShoppingCart, FaUtensils, FaWallet } from "react-icons/fa";
-import { Link, NavLink, Outlet } from "react-router-dom";
-import { AiOutlineBars } from 'react-icons/ai'
 
+import { FaHome, FaHouseUser, FaMale, FaShoppingCart, FaUser } from "react-icons/fa";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+
+import useCart from "../hooks/useCart";
 import logo from '../assets/images/mindfulness.png';
-
-
-import { useState } from "react";
 import useAdmin from "../hooks/useAdmin";
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProviders";
-
+import useAuth from "../hooks/useAuth";
+import { useState } from "react";
 
 const Dashboard = () => {
 
+    const [cart] = useCart();
+    const { user, logOut } = useAuth();
+    const navigate = useNavigate();
+    const [isActive] = useState('false')
+    // TODO: load data from the server to have dynamic isAdmin based on this page
+    // const isAdmin = true;
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin);
 
-    const { user, logOut, } = useContext(AuthContext);
-    const [isActive, setActive] = useState('false')
 
-    const [isAdmin, isAdminLoading] = useAdmin();
-    console.log(isAdmin, isAdminLoading);
-
-    const handleToggle = () => {
-        setActive(!isActive)
-
-    }
 
     const handleLogOut = () => {
         logOut()
             .then(() => {
-
+                navigate('/');
             })
             .catch(error => console.log(error))
     }
-
     return (
         <div className={`drawer ${isActive ? "drawer-mobile" : ""}`}>
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -40,12 +35,7 @@ const Dashboard = () => {
                 {isActive && (
                     <Outlet />
                 )}
-                <button
-                    onClick={handleToggle}
-                    className='mobile-menu-button p-4 focus:outline-none focus:bg-gray-200 text-red-600 lg:hidden'
-                >
-                    <AiOutlineBars className='h-5 w-5' />
-                </button>
+
 
             </div>
             <div className="drawer-side bg-[#650305fb] text-white">
@@ -79,24 +69,25 @@ const Dashboard = () => {
                     {
                         isAdmin ? <>
                             <li><NavLink to="/dashboard/adminhome"><FaHome /> Admin Home</NavLink></li>
-                            <li><NavLink to="/dashboard/manageusers"><FaUtensils /> Manage Users</NavLink></li>
-                            <li><NavLink to="/dashboard/manageclasses"><FaWallet /> Manage Classes</NavLink></li>
+                            <li><NavLink to="/dashboard/manageusers"><FaUser /> Manage Users</NavLink></li>
+                            <li><NavLink to="/dashboard/manageclasses"><FaHouseUser /> Manage Classes</NavLink></li>
 
 
                             <div className="divider"></div>
                             <li><NavLink to='/'><FaHome /> Home</NavLink></li>
-                            <li><NavLink to="/menu">OUR Instractors</NavLink></li>
-                            <li><NavLink to='/order/salad'>Our Classes</NavLink></li>
+                            <li><NavLink to="/instractors"><FaMale />Our Instractors</NavLink></li>
+                            <li><NavLink to='/classes'><FaHouseUser />Our Classes</NavLink></li>
                         </> : <>
-                            <li><NavLink to="/dashboard/userhome"><FaHome /> Student Home</NavLink></li>
-                            <li><NavLink to="/reservation"><FaCalendar /> My Selected Classes</NavLink></li>
-                            <li><NavLink to="/history"><FaWallet /> My Payments</NavLink></li>
-                            <li><NavLink to='/dashboard/mycart'><FaShoppingCart /> My Enrolled Classes</NavLink></li>
-                            {/* <div className="badge badge-secondary">+{classes.length || 0}</div></li> */}
+                            <li><NavLink to="/dashboard/usershome"><FaHome /> Student Home</NavLink></li>
+                            <li><NavLink to="/dashboard/selectedclasses"><FaHouseUser /> My Selected Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/mycart'><FaShoppingCart /> My Cart</NavLink>
+                                <div className="badge badge-secondary">+{cart?.length || 0}</div></li>
+                            <div className="divider"></div>
+                            <li><NavLink to="/dashboard/enrolledclasses"><FaHouseUser /> My Enrolled Classes</NavLink></li>
                             <div className="divider"></div>
                             <li><NavLink to='/'><FaHome /> Home</NavLink></li>
-                            <li><NavLink to="/menu">OUR Instractors</NavLink></li>
-                            <li><NavLink to='/order/salad'>ORDER Classes</NavLink></li>
+                            <li><NavLink to="/menu"><FaMale />Our Instructors</NavLink></li>
+                            <li><NavLink to='/order/salad'><FaHouseUser />Our Classes</NavLink></li>
 
 
                         </>
@@ -108,7 +99,7 @@ const Dashboard = () => {
 
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default Dashboard;

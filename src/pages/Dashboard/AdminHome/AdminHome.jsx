@@ -1,23 +1,27 @@
-import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../../providers/AuthProviders";
+// import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+// import { AuthContext } from "../../../providers/AuthProviders";
 import logo from '../../../assets/images/mindfulness.png';
 import { FaHome, FaHouseUser, FaMale, FaUser } from "react-icons/fa";
+import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const AdminHome = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, refatch } = useAuth();
+    const navigate = useNavigate();
     // const [axiosSecure] = useAxiosSecure();
     const [isAdmin, isAdminLoading] = useAdmin();
     console.log(isAdmin, isAdminLoading);
 
-    const handleLogOut = () => {
 
+
+    const handleLogOut = () => {
+        refatch();
         logOut()
             .then(() => {
-
+                navigate('/');
             })
             .catch(error => console.log(error))
     }

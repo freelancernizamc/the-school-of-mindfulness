@@ -1,11 +1,14 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../providers/AuthProviders";
-import { FaHome, FaHouseUser, FaMale } from "react-icons/fa";
+// import { AuthContext } from "../../../providers/AuthProviders";
+import { FaHome, FaHouseUser, FaMale, FaShoppingCart } from "react-icons/fa";
 import logo from '../../../assets/images/mindfulness.png';
+import useAuth from "../../../hooks/useAuth";
+import useCart from "../../../hooks/useCart";
 
 const UserHome = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useAuth();
+    const cart = useCart();
     const navigate = useNavigate();
 
     const handleLogOut = () => {
@@ -53,12 +56,14 @@ const UserHome = () => {
                         </div>
                         <div className="mt-4">
                             <li><NavLink to="/dashboard/usershome"><FaHome /> Student Home</NavLink></li>
-                            <li><NavLink to="/dashboard/selectedclasses"><FaHouseUser /> My Selected Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/mycart'><FaShoppingCart /> My Selected Classes</NavLink>
+                                <div className="badge badge-secondary">+{cart?.length || 0}</div></li>
+
                             <li><NavLink to="/dashboard/enrolledclasses"><FaHouseUser /> My Enrolled Classes</NavLink></li>
                             <div className="divider"></div>
                             <li><NavLink to='/'><FaHome /> Home</NavLink></li>
-                            <li><NavLink to="/menu"><FaMale />Our Instructors</NavLink></li>
-                            <li><NavLink to='/order/salad'><FaHouseUser />Our Classes</NavLink></li>
+                            <li><NavLink to="/instractors"><FaMale />Our Instructors</NavLink></li>
+                            <li><NavLink to='/classes'><FaHouseUser />Our Classes</NavLink></li>
                         </div>
                         <li className="mt-40"> <NavLink onClick={handleLogOut}>Log Out</NavLink></li>
                     </ul>

@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const useAdmin = () => {
-    const { user, loading, } = useAuth();
+    const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
     const { data: isAdmin, isLoading: isAdminLoading } = useQuery({
