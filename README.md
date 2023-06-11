@@ -2,9 +2,9 @@ This projects is created by using Tailwind Css, daisyui, MongoDB, Firebase, Reac
 What's I do In this Projects!
 1. In this projects i use Firebase authentication: Google,  Email and password.
 2. In this projects data loaded from mongoDB and server deployed in vercel.
-Here is server Live Link:    
+Here is server Live Link:    https://assignment-12-server-lyart.vercel.app/
 3. This projects deployed in Firebase,
-Here is Live Link:     
+Here is Live Link:     https://assignment-12-client-ae808.web.app/
 
 4. In home page  have a slider banner, top Instractors where has following information:
 

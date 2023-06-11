@@ -11,7 +11,7 @@ const Instractors = () => {
     const { isLoading, error, isError, data } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
-            fetch('http://localhost:5000/instractors').then(
+            fetch('https://assignment-12-server-lyart.vercel.app/instractors').then(
                 (res) => res.json(),
             ),
     })

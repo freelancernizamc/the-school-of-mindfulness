@@ -4,7 +4,7 @@ const TopInstructor = () => {
     const { isLoading, isError, error, data } = useQuery({
         queryKey: ['instructors'], // Update the query key to match the server-side query
         queryFn: () =>
-            fetch('http://localhost:5000/top-instractors?limit=6') // Add a limit parameter to fetch only 6 instructors
+            fetch('https://assignment-12-server-lyart.vercel.app/top-instractors?limit=6') // Add a limit parameter to fetch only 6 instructors
                 .then((res) => res.json()),
     });
 

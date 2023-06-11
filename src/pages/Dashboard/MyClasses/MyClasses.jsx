@@ -6,7 +6,7 @@ import Navbar from '../../Shared/Navbar/Navbar';
 const MyClasses = () => {
     const { user } = useAuth();
     const [classData, setClassData] = useState([]);
-    const url = `http://localhost:5000/uploads?email=${user?.email}`;
+    const url = `https://assignment-12-server-lyart.vercel.app/uploads?email=${user?.email}`;
 
     useEffect(() => {
         fetch(url)
@@ -23,7 +23,7 @@ const MyClasses = () => {
         console.log(id);
         const proceed = window.confirm('Are you sure you want to delete it?');
         if (proceed) {
-            fetch(`http://localhost:5000/api/classes/${id}`, {
+            fetch(`https://assignment-12-server-lyart.vercel.app/api/classes/${id}`, {
                 method: 'DELETE',
             })
                 .then((res) => res.json())

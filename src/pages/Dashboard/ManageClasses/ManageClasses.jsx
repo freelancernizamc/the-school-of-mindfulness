@@ -8,7 +8,7 @@ const ManageClasses = () => {
     const { isLoading, error, isError, data, refetch } = useQuery({
         queryKey: ['repoData'],
         queryFn: () =>
-            fetch('http://localhost:5000/classes').then(res => res.json()),
+            fetch('https://assignment-12-server-lyart.vercel.app/classes').then(res => res.json()),
     });
 
     if (isLoading) {
@@ -30,7 +30,7 @@ const ManageClasses = () => {
             confirmButtonText: 'Yes, delete it!',
         }).then(result => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/classes/${classes._id}`, {
+                fetch(`https://assignment-12-server-lyart.vercel.app/classes/${classes._id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

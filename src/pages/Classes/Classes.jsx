@@ -8,7 +8,7 @@ const Classes = () => {
     const { isLoading, error, isError, data } = useQuery({
         queryKey: ["repoData"],
         queryFn: () =>
-            fetch("http://localhost:5000/classes").then((res) => res.json()),
+            fetch("https://assignment-12-server-lyart.vercel.app/classes").then((res) => res.json()),
     });
 
     const [selectedClasses, setSelectedClasses] = useState([]); // Declare the selectedClasses state

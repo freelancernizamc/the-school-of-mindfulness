@@ -14,7 +14,7 @@ const ManageUsers = () => {
     })
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://assignment-12-server-lyart.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -34,7 +34,7 @@ const ManageUsers = () => {
     }
 
     const handleMakeInstractor = user => {
-        fetch(`http://localhost:5000/users/instractor/${user._id}`, {
+        fetch(`https://assignment-12-server-lyart.vercel.app/users/instractor/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -65,7 +65,7 @@ const ManageUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${user._id}`, {
+                fetch(`https://assignment-12-server-lyart.vercel.app/users/${user._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

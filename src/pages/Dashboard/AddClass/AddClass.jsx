@@ -33,7 +33,7 @@ const AddClass = () => {
 
         try {
             const response = await fetch(
-                'http://localhost:5000/api/classes',
+                'https://assignment-12-server-lyart.vercel.app/api/classes',
                 {
                     method: 'POST',
                     headers: {

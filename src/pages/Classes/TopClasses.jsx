@@ -13,7 +13,7 @@ const TopClasses = (classes) => {
     const { isLoading, isError, error, data } = useQuery({
         queryKey: ['classes'], // Update the query key to match the server-side query
         queryFn: () =>
-            fetch('http://localhost:5000/top-classes?limit=6')
+            fetch('https://assignment-12-server-lyart.vercel.app/top-classes?limit=6')
                 .then((res) => res.json()),
     });
 
@@ -30,7 +30,7 @@ const TopClasses = (classes) => {
 
         if (user && user.email) {
             const selectedClasses = { selectedClasses: _id, name, image, price, instractorName, availableSeats, email: user.email }
-            fetch('http://localhost:5000/selectedClasses', {
+            fetch('https://assignment-12-server-lyart.vercel.app/selectedClasses', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

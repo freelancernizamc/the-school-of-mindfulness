@@ -6,7 +6,7 @@ const InstractorDetails = () => {
     const [instructor, setInstructor] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/instractors/${_id}`)
+        fetch(`https://assignment-12-server-lyart.vercel.app/instractors/${_id}`)
             .then(res => res.json())
             .then(data => setInstructor(data))
             .catch(error => console.error(error))

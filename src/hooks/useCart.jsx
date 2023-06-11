@@ -9,7 +9,7 @@ const useCart = () => {
         queryKey: ['selectedClasses', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const response = await fetch(`http://localhost:5000/selectedClasses?email=${user?.email}`
+            const response = await fetch(`https://assignment-12-server-lyart.vercel.app/selectedClasses?email=${user?.email}`
                 , {
                     headers: {
                         authorization: `bearer ${token}`
