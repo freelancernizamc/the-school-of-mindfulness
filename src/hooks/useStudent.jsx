@@ -12,8 +12,8 @@ const useStudent = () => {
         enabled: !loading && !!user?.email && !!localStorage.getItem('access-token'),
         queryFn: async () => {
             const res = await axiosSecure.get(`/user/student/${user?.email}`);
-            console.log(res.data);
-            return res.data;
+            // console.log(res.data);
+            return res.data.student;
 
         }
     })
