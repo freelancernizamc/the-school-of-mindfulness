@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 const TopInstructor = () => {
     const { isLoading, isError, error, data } = useQuery({
@@ -29,7 +30,7 @@ const TopInstructor = () => {
                         <p>No of Taken Classes: {instructor.takenClasses}</p>
                         <p>Name of Classes: {instructor.nameOfTakenClasses}</p>
                         <div className="card-actions">
-                            <button className="btn bg-[#9931E1] text-white hover:bg-[#272030]">See Classes</button>
+                            <Link to={`/instractordetails/${instructor._id}`} ><button className="btn bg-[#9931E1] text-white hover:bg-[#272030]">See Classes</button></Link>
                         </div>
                     </div>
                 </div>

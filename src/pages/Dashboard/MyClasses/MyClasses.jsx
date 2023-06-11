@@ -6,7 +6,7 @@ import Navbar from '../../Shared/Navbar/Navbar';
 const MyClasses = () => {
     const { user } = useAuth();
     const [classData, setClassData] = useState([]);
-    const url = `https://assignment-12-server-lyart.vercel.app/uploads?email=${user?.email}`;
+    const url = `https://assignment-12-server-lyart.vercel.app/uploads?instructorEmail=${user?.email}`;
 
     useEffect(() => {
         fetch(url)

@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
                 element: <Instractors />
             },
             {
-                path: '/instractor/:id',
+                path: '/instractordetails/:_id',
                 element: <InstractorDetails />
             },
 

@@ -1,48 +1,58 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const InstractorDetails = () => {
-    const { _id, instructors } = useParams();
+    const { _id } = useParams();
     const [instructor, setInstructor] = useState(null);
 
     useEffect(() => {
-        fetch(`https://assignment-12-server-lyart.vercel.app/instractors/${_id}`)
-            .then(res => res.json())
-            .then(data => setInstructor(data))
-            .catch(error => console.error(error))
+        fetch(`https://assignment-12-server-lyart.vercel.app/users/instractor/${_id}`)
+            .then((res) => res.json())
+            .then((data) => setInstructor(data))
+            .catch((error) => console.error(error));
     }, [_id]);
+
 
     if (!instructor) {
         return <div>Loading...</div>;
     }
 
+    const { name, image, email, takenClasses, nameOfTakenClasses, classDetails } = instructor;
+
     return (
         <div>
             <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img src="/images/stock/photo-1635805737707-575885ab0820.jpg" className="max-w-sm rounded-lg shadow-2xl" />
-                    <div>
-                        <h1 className="text-5xl font-bold">Box Office News!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                <div className="hero min-h-screen bg-[#272030] text-white">
+                    <div className="hero-content flex-col lg:flex-row-reverse">
+                        <img src={image} className="max-w-sm rounded-full shadow-2xl" />
+                        <div className="mr-20">
+                            <h1 className="text-5xl font-bold mb-4">{name}</h1>
+                            <p>Email: {email}</p>
+                            <p className="my-2">Number of Taken Classes: {takenClasses}</p>
+                            <button className="btn bg-[#9931E1] text-white hover:bg-[#272030]">Contact</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <h2 className="text-5xl text-center my-10">See Our Latest Recipe</h2>
-            <div className="grid grid-cols-3">
-                {instructors.map((instructor, index) => (
-                    <div key={index} className="card card-compact w-96 bg-base-100 shadow-xl m-4 text-center">
-                        <img className="w-[200px] ml-5" src={instructor.image} alt="instructor" />
+            <h2 className="text-5xl text-center my-10 font-bold">See My Classes</h2>
+
+            <h2 className="text-3xl text-center my-10">Taken Classes</h2>
+            <div className="grid grid-cols-2 bg-[#b6b1bd]">
+                {nameOfTakenClasses.map((className, index) => (
+                    <div key={index} className="card card-compact w-96 bg-[#272030] text-white shadow-xl m-4 text-center">
+                        <img className="w-[300px] h-[300px] ml-5 mt-2" src={classDetails[index].image} alt="class" />
                         <div className="card-body text-left">
-                            <h2 className="card-title">{instructor.name}</h2>
-                            <p>Description: {instructor.description}</p>
-                            <p>Number of Taken Classes: {instructor.availableSeats}</p>
+                            <h2 className="card-title">{className}</h2>
+                            <p>Description: {classDetails[index].description}</p>
+                            <p>Available Seats: {classDetails[index].availableSeats}</p>
+                            <p>Price: {classDetails[index].price}</p>
+                            <Link to='/dashboard/payment'><button className="btn bg-[#9931E1] text-white">Enroll Now</button></Link>
                         </div>
                     </div>
                 ))}
             </div>
         </div>
     );
-}
+};
 
 export default InstractorDetails;
