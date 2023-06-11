@@ -17,9 +17,9 @@ const TopInstructor = () => {
     }
 
     return (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-4">
             {data.map((instructor) => (
-                <div key={instructor._id} className="card w-96 bg-black text-white hover:bg-slate-300 hover:text-black shadow-xl">
+                <div key={instructor._id} className="card w-96 bg-[#272030] text-white hover:bg-slate-300 hover:text-black shadow-xl">
                     <figure className="px-10 pt-10">
                         <img src={instructor.image} alt="Shoes" className="rounded-xl" />
                     </figure>
@@ -29,7 +29,7 @@ const TopInstructor = () => {
                         <p>No of Taken Classes: {instructor.takenClasses}</p>
                         <p>Name of Classes: {instructor.nameOfTakenClasses}</p>
                         <div className="card-actions">
-                            <button className="btn bg-[#9931E1] text-white">See Classes</button>
+                            <button className="btn bg-[#9931E1] text-white hover:bg-[#272030]">See Classes</button>
                         </div>
                     </div>
                 </div>

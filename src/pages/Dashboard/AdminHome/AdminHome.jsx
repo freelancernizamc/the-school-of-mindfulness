@@ -5,11 +5,12 @@ import logo from '../../../assets/images/mindfulness.png';
 import { FaHome, FaHouseUser, FaMale, FaUser } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
+import { Helmet } from "react-helmet-async";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const AdminHome = () => {
-    const { user, logOut, refatch } = useAuth();
+    const { user, logOut } = useAuth();
     const navigate = useNavigate();
     // const [axiosSecure] = useAxiosSecure();
     const [isAdmin, isAdminLoading] = useAdmin();
@@ -18,7 +19,7 @@ const AdminHome = () => {
 
 
     const handleLogOut = () => {
-        refatch();
+
         logOut()
             .then(() => {
                 navigate('/');
@@ -28,6 +29,9 @@ const AdminHome = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>The School of Mindfulness | Admin Home</title>
+            </Helmet>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
@@ -35,7 +39,7 @@ const AdminHome = () => {
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
-                <div className="drawer-side bg-black text-white">
+                <div className="drawer-side bg-[#272030] text-white">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <div className="mt-1 pl-8 ml-20"><img className='h-[30px] my-2' src={logo} alt="logo" /></div>
                     <ul className="menu p-4 w-80 ">

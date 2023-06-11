@@ -7,6 +7,7 @@ import logo from '../assets/images/mindfulness.png';
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
+// import useInstractor from "../hooks/useInstractor";
 
 const Dashboard = () => {
 
@@ -17,7 +18,9 @@ const Dashboard = () => {
     // TODO: load data from the server to have dynamic isAdmin based on this page
     // const isAdmin = true;
     const [isAdmin] = useAdmin();
+    // const [isInstractor] = useInstractor();
     console.log(isAdmin);
+    // console.log(isInstractor);
 
 
 
@@ -79,15 +82,15 @@ const Dashboard = () => {
                             <li><NavLink to='/classes'><FaHouseUser />Our Classes</NavLink></li>
                         </> : <>
                             <li><NavLink to="/dashboard/usershome"><FaHome /> Student Home</NavLink></li>
-                            <li><NavLink to="/dashboard/selectedclasses"><FaHouseUser /> My Selected Classes</NavLink></li>
-                            <li><NavLink to='/dashboard/mycart'><FaShoppingCart /> My Cart</NavLink>
-                                <div className="badge badge-secondary">+{cart?.length || 0}</div></li>
+                            <li><NavLink to="/dashboard/selectedclasses"><FaShoppingCart /> My Selected Classes</NavLink></li>
+
+                            <div className="badge badge-secondary">+{cart?.length || 0}</div>
                             <div className="divider"></div>
                             <li><NavLink to="/dashboard/enrolledclasses"><FaHouseUser /> My Enrolled Classes</NavLink></li>
                             <div className="divider"></div>
                             <li><NavLink to='/'><FaHome /> Home</NavLink></li>
-                            <li><NavLink to="/menu"><FaMale />Our Instructors</NavLink></li>
-                            <li><NavLink to='/order/salad'><FaHouseUser />Our Classes</NavLink></li>
+                            <li><NavLink to="/instractors"><FaMale />Our Instructors</NavLink></li>
+                            <li><NavLink to='/classes'><FaHouseUser />Our Classes</NavLink></li>
 
 
                         </>

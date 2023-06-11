@@ -19,7 +19,7 @@ const InstractorBanner = () => {
                         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
                         a id nisi.
                     </p>
-                    <button className="btn bg-[#9931E1]">Contact Now</button>
+                    <button className="btn bg-[#9931E1] text-white hover:bg-[#272030]">Contact Now</button>
                 </div>
             </div>
         </div>

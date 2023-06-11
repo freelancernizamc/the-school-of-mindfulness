@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import { FaTrashAlt, FaUserShield } from "react-icons/fa";
+import { FaTrashAlt, FaUserCircle, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Navbar from "../../Shared/Navbar/Navbar";
 
 
 const ManageUsers = () => {
@@ -86,16 +87,17 @@ const ManageUsers = () => {
 
     return (
         <div className="md:w-full">
+            <Navbar />
             <Helmet>
                 <title>The School of Mindfulness | Manage Users</title>
 
             </Helmet>
-            <h3 className="text-3xl font-semibold my-4 text-center">Total Users: {users.length}</h3>
+            <h3 className="text-3xl font-semibold my-4 text-center bg-[#272030] text-white">Total Users: {users.length}</h3>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="text-xl">
 
                             <th>#</th>
                             <th>Image</th>
@@ -133,7 +135,7 @@ const ManageUsers = () => {
 
                                 </td>
                                 <td>{user.role === 'instractor' ? 'instractor' :
-                                    <button onClick={() => handleMakeInstractor(user)} className="btn btn-ghost btn-sm bg-[#56e781] text-white"> <FaUserShield /></button>
+                                    <button onClick={() => handleMakeInstractor(user)} className="btn btn-ghost btn-sm bg-[#56e781] text-white"> <FaUserCircle /></button>
 
                                 }</td>
                                 <td>{user.role === 'admin' ? 'admin' :

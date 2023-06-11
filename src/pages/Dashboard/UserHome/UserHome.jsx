@@ -21,6 +21,7 @@ const UserHome = () => {
 
     return (
         <div>
+
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
@@ -28,7 +29,7 @@ const UserHome = () => {
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
-                <div className="drawer-side bg-black text-white">
+                <div className="drawer-side bg-[#272030] text-white">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <div className="mt-1 pl-8 ml-20"><img className='h-[30px] my-2' src={logo} alt="logo" /></div>
                     <ul className="menu p-4 w-80 ">
@@ -56,8 +57,8 @@ const UserHome = () => {
                         </div>
                         <div className="mt-4">
                             <li><NavLink to="/dashboard/usershome"><FaHome /> Student Home</NavLink></li>
-                            <li><NavLink to='/dashboard/mycart'><FaShoppingCart /> My Selected Classes</NavLink>
-                                <div className="badge badge-secondary">+{cart?.length || 0}</div></li>
+                            <li><NavLink to='/dashboard/selectedclasses'><FaShoppingCart /> My Selected Classes</NavLink></li>
+                            <div className="badge bg-[#9931E1] text-white">+{cart?.length || 0}</div>
 
                             <li><NavLink to="/dashboard/enrolledclasses"><FaHouseUser /> My Enrolled Classes</NavLink></li>
                             <div className="divider"></div>

@@ -5,11 +5,11 @@ const useCart = () => {
     const { user, loading } = useContext(AuthContext);
     const token = localStorage.getItem('access-token');
 
-    const { refetch, data: cart = [] } = useQuery({
-        queryKey: ['carts', user?.email],
+    const { refetch, data: SelectedClasses = [] } = useQuery({
+        queryKey: ['selectedClasses', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const response = await fetch(`http://localhost:5000/carts?email=${user?.email}`
+            const response = await fetch(`http://localhost:5000/selectedClasses?email=${user?.email}`
                 , {
                     headers: {
                         authorization: `bearer ${token}`
@@ -19,7 +19,7 @@ const useCart = () => {
         },
     })
 
-    return [cart, refetch]
+    return [SelectedClasses, refetch]
 
 }
 

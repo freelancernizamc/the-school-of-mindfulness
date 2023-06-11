@@ -310,5 +310,25 @@
                 "description": "A style of yoga practiced in a heated room, consisting of a fixed sequence of 26 postures and 2 breathing exercises."
             }
         ]
+    },
+    {
+        "name": "Neaz Ahmed",
+        "image": "https://i.ibb.co/RT1ZrCG/img-header.png",
+        "email": "neazahmed@gmail.com.com",
+        "takenClasses": 10,
+        "nameOfTakenClasses": [
+            "Quantum Meditation",
+            "Quantum Yoga "
+        ],
+        "classDetails": [
+            {
+                "name": "Quantum Meditation",
+                "image": "https://i.ibb.co/pXTm55b/Meditation2.jpg",
+                "instructorName": "Neaz Ahmed",
+                "availableSeats": 8,
+                "price": 50,
+                "description": "Meditation is a way for success and happyness."
+            }
+        ]
     }
 ]

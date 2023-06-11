@@ -19,7 +19,7 @@ const ClassesBanner = () => {
                         excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
                         a id nisi.
                     </p>
-                    <button className="btn bg-[#9931E1]">Enroll Now</button>
+                    <button className="btn bg-[#9931E1] text-white">Enroll Now</button>
                 </div>
             </div>
         </div>

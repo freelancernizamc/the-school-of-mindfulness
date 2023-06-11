@@ -12,7 +12,7 @@ const FeedBack = () => {
 
 
     return (
-        <div className="mb-10 bg-black text-white">
+        <div className="mb-10 bg-[#272030] text-white">
             <SectionTitle
                 subHeading="---The School of Mindfulness"
                 heading="What Our Students Say"

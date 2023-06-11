@@ -4,7 +4,7 @@ import logo from '../../../assets/images/mindfulness.png';
 const Footer = () => {
     return (
         <footer>
-            <div className="footer p-10 bg-black text-neutral-content">
+            <div className="footer p-10 bg-[#272030] text-neutral-content">
                 <div>
                     <img src={logo} alt="logo" />
                     <p>THE SCHOOL OF MINDFULNESS<br />Address: 81/A Panslaish R/A, Chattogram.</p>

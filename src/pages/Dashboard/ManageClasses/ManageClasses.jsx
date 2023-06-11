@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import Navbar from "../../Shared/Navbar/Navbar";
 
 const ManageClasses = () => {
     const { isLoading, error, isError, data, refetch } = useQuery({
@@ -49,17 +50,18 @@ const ManageClasses = () => {
 
     return (
         <div className="md:w-full">
+            <Navbar />
             <Helmet>
                 <title>The School of Mindfulness | Manage Classes</title>
             </Helmet>
-            <h3 className="text-3xl font-semibold my-4 text-center">
+            <h3 className="text-3xl font-semibold my-4 text-center bg-[#272030] text-white">
                 Total Classes: {data.length}
             </h3>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="text-xl">
                             <th>#</th>
                             <th>Image</th>
                             <th>Class Name</th>

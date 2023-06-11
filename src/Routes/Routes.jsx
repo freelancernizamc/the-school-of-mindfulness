@@ -12,12 +12,18 @@ import Dashboard from "../Layout/Dashboard";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import InstractorsHome from "../pages/Dashboard/InstractorsHome/InstractorsHome";
-import AdminRoute from "./AdminRoute";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AdminRoute from "./AdminRoute";
+import SelectedClass from "../pages/Dashboard/SelectedClass/SelectedClass";
 import InstractorRoute from "./InstractorRoute";
+import InstractorDetails from "../pages/Instractors/InstractorDetails";
+import AddClass from "../pages/Dashboard/AddClass/AddClass";
+import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
+import MyEnrolledClasses from "../pages/Dashboard/MyEnrolledClasses/MyEnrolledClasses";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 
 
@@ -41,8 +47,13 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'instractors',
-                element: <InstractorRoute><Instractors /></InstractorRoute>
+                element: <Instractors />
             },
+            {
+                path: '/instractor/:id',
+                element: <InstractorDetails />
+            },
+
             {
                 path: 'classes',
                 element: <Classes />
@@ -59,12 +70,16 @@ export const router = createBrowserRouter([
                 element: <UserHome />
             },
             {
+                path: 'selectedclasses',
+                element: <SelectedClass />
+            },
+            {
                 path: 'adminhome',
                 element: <AdminRoute><AdminHome /></AdminRoute>
             },
             {
                 path: 'instractorshome',
-                element: <InstractorsHome />
+                element: <InstractorRoute><InstractorsHome /></InstractorRoute>
             },
             {
                 path: 'manageusers',
@@ -73,6 +88,22 @@ export const router = createBrowserRouter([
             {
                 path: 'manageclasses',
                 element: <ManageClasses />
+            },
+            {
+                path: 'addclass',
+                element: <AddClass />
+            },
+            {
+                path: 'myclasses',
+                element: <MyClasses />
+            },
+            {
+                path: 'enrolledclasses',
+                element: <MyEnrolledClasses />
+            },
+            {
+                path: 'payment',
+                element: <Payment />
             }
 
 
