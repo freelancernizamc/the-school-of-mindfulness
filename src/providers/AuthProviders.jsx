@@ -3,7 +3,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 import { app } from "../firebase/firebase.config";
 import axios from "axios";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider()
@@ -29,7 +29,7 @@ const AuthProviders = ({ children }) => {
     }
 
     const logOut = () => {
-        setLoading(true);
+
         return signOut(auth);
     }
 
@@ -49,18 +49,20 @@ const AuthProviders = ({ children }) => {
 
                 axios.post('https://assignment-12-server-lyart.vercel.app/jwt', { email: currentUser.email })
                     .then(data => {
-                        console.log(data.data.token)
-                        localStorage.setItem('access-token', data.data.token)
-                        // setLoading(false);
+                        if (data.data) {
+                            console.log(data.data.token)
+                            localStorage.setItem('access-token', data?.data?.token)
+                            setLoading(false);
+                        }
                     })
 
             }
             else {
                 localStorage.removeItem('access-token')
-                // setLoading(false);
+                setLoading(false);
             }
 
-            setLoading(false);
+
         });
         return () => {
             return unsubscribe();

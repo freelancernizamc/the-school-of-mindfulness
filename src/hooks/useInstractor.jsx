@@ -9,10 +9,10 @@ const useInstractor = () => {
 
     const { data: isInstractor, isLoading: isInstractorLoading } = useQuery({
         queryKey: ['isInstractor', user?.email],
-        enabled: !loading && !!user?.email && !!localStorage.getItem('access-token'),
+        enabled: !loading && !!user?.email,
         queryFn: async () => {
             const res = await axiosSecure.get(`/user/instractor/${user?.email}`);
-            console.log(res.data);
+            // console.log(res.data);
             return res.data.instractor;
 
         }

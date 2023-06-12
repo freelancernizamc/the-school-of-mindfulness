@@ -11,9 +11,11 @@ const useStudent = () => {
         queryKey: ['isStudent', user?.email],
         enabled: !loading && !!user?.email && !!localStorage.getItem('access-token'),
         queryFn: async () => {
-            const res = await axiosSecure.get(`/user/student/${user?.email}`);
-            console.log(res.data);
-            return res.data;
+            if (!loading && user?.email) {
+                const res = await axiosSecure.get(`/users/student/${user?.email}`);
+                console.log(res.data.student);
+                return res.data.student;
+            }
 
         }
     })
