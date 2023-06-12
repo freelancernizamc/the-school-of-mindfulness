@@ -6,15 +6,15 @@ import { FaHome, FaHouseUser, FaMale, FaUser } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
 import { Helmet } from "react-helmet-async";
-// import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const AdminHome = () => {
     const { user, logOut } = useAuth();
     const navigate = useNavigate();
-    // const [axiosSecure] = useAxiosSecure();
+    const [axiosSecure] = useAxiosSecure();
     const [isAdmin, isAdminLoading] = useAdmin();
-    console.log(isAdmin, isAdminLoading);
+    console.log(isAdmin, isAdminLoading, axiosSecure);
 
 
 
