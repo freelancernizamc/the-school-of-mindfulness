@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
-
-import useAuth from '../../../hooks/useAuth';
 import Navbar from '../../Shared/Navbar/Navbar';
+import useAuth from '../../../hooks/useAuth';
 
-const MyClasses = () => {
+const MyClasses = ({ instructorEmail }) => {
     const { user } = useAuth();
+
     const [classData, setClassData] = useState([]);
-    const url = `https://assignment-12-server-lyart.vercel.app/uploads?instructorEmail=${user?.email}`;
+    const [feedbackVisible, setFeedbackVisible] = useState(false);
+    const [selectedClass, setSelectedClass] = useState(null);
+    const [feedbackText, setFeedbackText] = useState("");
+
+    const url = `https://assignment-12-server-lyart.vercel.app/classes?instructorEmail=${instructorEmail}`;
+
 
     useEffect(() => {
         fetch(url)
@@ -17,10 +22,10 @@ const MyClasses = () => {
             .catch((error) => {
                 console.error('Error fetching class data:', error);
             });
-    }, [url]);
+
+    }, [url, user]);
 
     const handleDelete = (id) => {
-        console.log(id);
         const proceed = window.confirm('Are you sure you want to delete it?');
         if (proceed) {
             fetch(`https://assignment-12-server-lyart.vercel.app/api/classes/${id}`, {
@@ -29,16 +34,25 @@ const MyClasses = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     console.log(data);
-                    // if (data.deletedCount > 0) {
                     alert('Class deleted successfully');
                     const remaining = classData.filter((d) => d._id !== id);
                     setClassData(remaining);
-                    // }
                 })
                 .catch((error) => {
                     console.error('Error deleting class:', error);
                 });
         }
+    };
+
+    const openFeedback = (classes) => {
+        setSelectedClass(classes);
+        setFeedbackVisible(true);
+    };
+
+    const sendFeedback = () => {
+        setSelectedClass(null);
+        setFeedbackText("");
+        setFeedbackVisible(false);
     };
 
     return (
@@ -50,32 +64,38 @@ const MyClasses = () => {
                         <tr>
                             <th className="px-4 py-2">Class Name</th>
                             <th className="px-4 py-2">Image</th>
-                            <th className="px-4 py-2">Instructor Name</th>
-                            <th className="px-4 py-2">Available Seats</th>
                             <th className="px-4 py-2">Price</th>
+                            <th className="px-4 py-2">Available Seats</th>
+                            <th className="px-4 py-2">Status</th>
                             <th className="px-4 py-2">Enrolled Students</th>
-                            <th className="px-4 py-2">Description</th>
                             <th className="px-4 py-2">Action</th>
                             <th className="px-4 py-2">Action</th>
+                            <th className="px-4 py-2">Feedback</th>
                         </tr>
                     </thead>
                     <tbody>
                         {classData.map((classes) => (
                             <tr key={classes._id}>
-                                <td className="px-4 py-2">{classes.className}</td>
+                                <td className="px-4 py-2">{classes.name}</td>
                                 <td className="px-4 py-2">
                                     <img className="w-16 h-16" src={classes.image} alt="Class" />
                                 </td>
-                                <td className="px-4 py-2">{classes.category}</td>
                                 <td className="px-4 py-2">{classes.price}</td>
-                                <td className="px-4 py-2">{classes.available_quantity}</td>
-                                <td className="px-4 py-2">{classes.rating}</td>
-                                <td className="px-4 py-2">{classes.description}</td>
+                                <td className="px-4 py-2">{classes.availableSeats}</td>
+                                <td className="px-4 py-2">{classes.status}</td>
+                                <td className="px-4 py-2">{classes.totalEnrolledStudents}</td>
                                 <td className="px-4 py-2">
-                                    <button onClick={() => handleDelete(classes._id)} className="btn">Delete</button>
+                                    <button onClick={() => handleDelete(classes._id)} className="btn btn-sm bg-red-600">
+                                        Delete
+                                    </button>
                                 </td>
                                 <td className="px-4 py-2">
                                     <button className="btn">Update</button>
+                                </td>
+                                <td className="px-4 py-2">
+                                    <button onClick={() => openFeedback(classes)} className="btn">
+                                        Feedback
+                                    </button>
                                 </td>
                             </tr>
                         ))}
@@ -83,6 +103,23 @@ const MyClasses = () => {
                 </table>
             ) : (
                 <div>Loading...</div>
+            )}
+
+            {feedbackVisible && selectedClass && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h2>Provide Feedback</h2>
+                        <p>Class: {selectedClass.name}</p>
+                        <textarea
+                            value={feedbackText}
+                            onChange={(e) => setFeedbackText(e.target.value)}
+                            placeholder="Enter your feedback"
+                        />
+                        <button onClick={sendFeedback} className="btn">
+                            Send Feedback
+                        </button>
+                    </div>
+                </div>
             )}
         </div>
     );

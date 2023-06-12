@@ -1,15 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
-import { FaTrashAlt } from "react-icons/fa";
+
 import Swal from "sweetalert2";
 import Navbar from "../../Shared/Navbar/Navbar";
+import { useState } from "react";
 
 const ManageClasses = () => {
     const { isLoading, error, isError, data, refetch } = useQuery({
-        queryKey: ['repoData'],
+        queryKey: ["repoData"],
         queryFn: () =>
-            fetch('https://assignment-12-server-lyart.vercel.app/classes').then(res => res.json()),
+            fetch("https://assignment-12-server-lyart.vercel.app/classes").then((res) =>
+                res.json()
+            ),
     });
+
+    const [feedbackVisible, setFeedbackVisible] = useState(false);
+    const [selectedClass, setSelectedClass] = useState(null);
+    const [feedbackText, setFeedbackText] = useState("");
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -19,33 +26,66 @@ const ManageClasses = () => {
         return <div>Error: {error.message}</div>;
     }
 
-    const handleDelete = classes => {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!',
-        }).then(result => {
-            if (result.isConfirmed) {
-                fetch(`https://assignment-12-server-lyart.vercel.app/classes/${classes._id}`, {
-                    method: 'DELETE',
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.deletedCount > 0) {
-                            refetch();
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success',
-                            );
-                        }
-                    });
-            }
-        });
+
+
+    const approveItem = (classes) => {
+
+        fetch(`https://assignment-12-server-lyart.vercel.app/classes/${classes._id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ status: "approved" }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    Swal.fire("Class Approved", "This Class has been approved.", "success");
+                    refetch();
+                } else {
+                    Swal.fire("Error", "Failed to approve the item.", "error");
+                }
+            })
+            .catch((error) => {
+                Swal.fire("Error", "An error occurred while approving the item.", "error");
+                console.error(error);
+            });
+    };
+
+    const denyItem = (classes) => {
+
+        fetch(`https://assignment-12-server-lyart.vercel.app/classes/${classes._id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ status: "denied" }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    Swal.fire("Class Denied", "The item has been denied.", "success");
+                    refetch();
+                } else {
+                    Swal.fire("Error", "Failed to deny the class.", "error");
+                }
+            })
+            .catch((error) => {
+                Swal.fire("Error", "An error occurred while denying the class.", "error");
+                console.error(error);
+            });
+    };
+
+    const openFeedback = (classes) => {
+        setSelectedClass(classes);
+        setFeedbackVisible(true);
+
+    };
+
+    const sendFeedback = () => {
+        setSelectedClass(selectedClass);
+        setFeedbackText("");
+        setFeedbackVisible(false);
     };
 
     return (
@@ -57,6 +97,18 @@ const ManageClasses = () => {
             <h3 className="text-3xl font-semibold my-4 text-center bg-[#272030] text-white">
                 Total Classes: {data.length}
             </h3>
+            {feedbackVisible && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <textarea
+                            value={feedbackText}
+                            onChange={(e) => setFeedbackText(e.target.value)}
+                            placeholder="Write feedback..."
+                        ></textarea>
+                        <button onClick={sendFeedback}>Send</button>
+                    </div>
+                </div>
+            )}
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}
@@ -65,9 +117,12 @@ const ManageClasses = () => {
                             <th>#</th>
                             <th>Image</th>
                             <th>Class Name</th>
-                            <th>Instructor</th>
+                            <th>Instructor Name</th>
+                            <th>Instructor Email</th>
                             <th>Available Seats</th>
                             <th>Price</th>
+                            <th>Action</th>
+                            <th>Action</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -84,14 +139,41 @@ const ManageClasses = () => {
                                 </td>
                                 <td>{classes.name}</td>
                                 <td>{classes.instructorName}</td>
+                                <td>{classes.instractorEmail}</td>
                                 <td>{classes.availableSeats}</td>
                                 <td>{classes.price}</td>
+
                                 <td>
                                     <button
-                                        onClick={() => handleDelete(classes)}
-                                        className="btn btn-ghost btn-sm bg-red-600 text-white"
+                                        className="btn btn-xs bg-green-500"
+                                        onClick={() => {
+                                            approveItem(classes);
+                                            setFeedbackVisible(false);
+                                        }}
+                                        disabled={classes.status === "approved" || classes.status === "denied"}
                                     >
-                                        <FaTrashAlt />
+                                        Approve
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        className="btn btn-xs bg-pink-600"
+                                        onClick={() => {
+                                            denyItem(classes);
+                                            setFeedbackVisible(false);
+                                        }}
+                                        disabled={classes.status === "approved" || classes.status === "denied"}
+                                    >
+                                        Deny
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        className="btn btn-xs"
+                                        onClick={() => openFeedback(classes)}
+                                        disabled={classes.status === "denied"}
+                                    >
+                                        Send Feedback
                                     </button>
                                 </td>
                             </tr>
@@ -99,6 +181,18 @@ const ManageClasses = () => {
                     </tbody>
                 </table>
             </div>
+            {feedbackVisible && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <textarea
+                            value={feedbackText}
+                            onChange={(e) => setFeedbackText(e.target.value)}
+                            placeholder="Write feedback..."
+                        ></textarea>
+                        <button onClick={sendFeedback}>Send</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

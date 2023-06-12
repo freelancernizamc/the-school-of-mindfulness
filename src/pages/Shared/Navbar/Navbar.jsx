@@ -26,20 +26,19 @@ const Navbar = () => {
             <li><Link to='/instractors'>Instructors</Link></li>
             <li><Link to='/classes'>Classes</Link></li>
             {isAdmin && <li><Link to="/dashboard/adminhome">Dashboard</Link></li>}
-            {isStudent && <li><Link to="/dashboard/userhome">Dashboard</Link></li>}
+            {/* {isStudent && <li><Link to="/dashboard/userhome">Dashboard</Link></li>}
             {isInstractor && <li><Link to="/dashboard/instractorshome">Dashboard</Link></li>}
-            {/* {isAdmin ?
-                <li><Link to="/dashboard/adminhome">Dashboard</Link></li> :
+
+            {isAdmin && !isStudent && <li><Link to="/dashboard/adminhome">Dashboard</Link></li>} */}
+
+            {isInstractor ?
+                <li><Link to="/dashboard/instractorshome">Dashboard</Link></li> :
                 <li><Link to="/dashboard/userhome">Dashboard</Link></li>
+
+
             }
 
-            {!isAdmin && isInstractor && (
-                <li><Link to="/dashboard/instractorshome">Dashboard</Link></li>
-            )}
 
-            {!isAdmin && !isInstractor && isStudent &&
-                <li><Link to="/dashboard/userhome">Dashboard</Link></li>
-            } */}
             <li>
                 <Link to='/dashboard/selectedClasses'>
                     <div className="gap-2 flex">
