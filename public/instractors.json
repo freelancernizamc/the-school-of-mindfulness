@@ -13,6 +13,7 @@
                 "name": "Beginner Yoga",
                 "image": "https://i.ibb.co/Sw0rymp/yoga-for-beginners.jpg",
                 "instructorName": "Emily Johnson",
+                "instructorEmail": "emily.johnson@gmail.com",
                 "availableSeats": 10,
                 "price": 15,
                 "description": "A class designed for yoga beginners to learn the foundational poses and principles of yoga practice."
